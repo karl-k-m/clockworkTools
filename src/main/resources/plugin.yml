@@ -1,0 +1,4 @@
+name: clockworkTools
+version: '${version}'
+main: com.github.karlkm.clockworktools.ClockworkTools
+api-version: '1.20'
