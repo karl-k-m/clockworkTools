@@ -2,6 +2,7 @@ name: clockworkTools
 version: '${version}'
 main: com.github.karlkm.clockworktools.ClockworkTools
 api-version: '1.20'
+description: Adds a variety of tools to the game to enhance survival gameplay.
 commands:
   ctool:
     description: Gives user a clockworkTools tool.
