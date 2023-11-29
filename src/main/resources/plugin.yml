@@ -2,3 +2,9 @@ name: clockworkTools
 version: '${version}'
 main: com.github.karlkm.clockworktools.ClockworkTools
 api-version: '1.20'
+commands:
+  ctool:
+    description: Gives user a clockworkTools tool.
+    usage: /ctool <tool>
+    permission: clockworktools.ctool
+    permission-message: You do not have permission to use this command.
