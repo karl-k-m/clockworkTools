@@ -4,7 +4,7 @@ A PaperMC plugin that adds a variety of tools to enhance survival gameplay.
 ## Commands:
 * **/ctool** - Gives the player a specified ctool.
 
-## Crafting recipes:
+## Items:
 | Item               | Effect                                                         | Ingredient 1    | Ingredient 2 |
 | ------------------ | -------------------------------------------------------------- | --------------- | ------------ |
 | Tunneler's Pickaxe | Mines 3x3 through natural stone-type blocks.                   | Diamond Pickaxe | Golden Apple |
