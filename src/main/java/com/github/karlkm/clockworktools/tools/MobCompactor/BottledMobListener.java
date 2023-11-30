@@ -50,9 +50,14 @@ public class BottledMobListener implements Listener {
             for (World world : Bukkit.getWorlds()) {
                 for (LivingEntity entity : world.getLivingEntities()) {
                     if (entity.getUniqueId().toString().equals(uuid.toString())) {
+                        if (Objects.equals(Objects.requireNonNull(entity.customName()) , Component.text("PersistentEntity"))) {
+                            entity.customName(null);
+                        }
+
                         entity.teleport(player.getLocation());
                         entity.removePotionEffect(PotionEffectType.SLOW);
                         entity.removePotionEffect(PotionEffectType.INVISIBILITY);
+                        entity.removePotionEffect(PotionEffectType.SLOW_FALLING);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> entity.setInvulnerable(false), 20L);
 
                         player.playSound(player.getLocation(), Sound.ENTITY_CHICKEN_EGG, 0.5F, 0.8F);

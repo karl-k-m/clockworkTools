@@ -44,6 +44,10 @@ public class MobCompactorListener implements Listener {
         }
     }
 
+    /**
+     * Listens for a player right-clicking on a mob with a Mob Compactor (bottle) in their hand and stores the mob.
+     * @param event The PlayerInteractEntityEvent
+     */
     @EventHandler
     public void onPlayerInteract(PlayerInteractEntityEvent event) {
         Player player = event.getPlayer();
@@ -59,10 +63,16 @@ public class MobCompactorListener implements Listener {
 
                 entity.setInvulnerable(true);
                 entity.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, Integer.MAX_VALUE, 255, false, false, false));
+                entity.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, Integer.MAX_VALUE, 255, false, false, false));
                 entity.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 255, false, false, false));
 
                 Location tpLocation = new Location(player.getWorld(), 0, player.getWorld().getMaxHeight(), 0);
                 entity.teleport(tpLocation);
+
+                // Add a custom name to the entity, so it doesn't despawn.
+                if (entity.customName() == null) {
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> entity.customName(Component.text("PersistentEntity")), 20L);
+                }
 
                 player.playSound(player.getLocation(), Sound.ENTITY_CHICKEN_EGG, 0.5F, 0.5F);
 
