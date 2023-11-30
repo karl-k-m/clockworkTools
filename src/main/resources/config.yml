@@ -1,3 +1,4 @@
 settings:
   enableBlinkPearl: true
   enableTunnelersPickaxe: true
+  enableMobCompactor: true

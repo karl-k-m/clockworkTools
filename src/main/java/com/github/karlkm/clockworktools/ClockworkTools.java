@@ -3,6 +3,9 @@ package com.github.karlkm.clockworktools;
 import com.github.karlkm.clockworktools.commands.Ctool;
 import com.github.karlkm.clockworktools.tools.BlinkPearl.BlinkPearlListener;
 import com.github.karlkm.clockworktools.tools.BlinkPearl.BlinkPearlTool;
+import com.github.karlkm.clockworktools.tools.MobCompactor.BottledMobListener;
+import com.github.karlkm.clockworktools.tools.MobCompactor.MobCompactorListener;
+import com.github.karlkm.clockworktools.tools.MobCompactor.MobCompactorTool;
 import com.github.karlkm.clockworktools.tools.TunnelersPickaxe.TunnelersPickaxeListener;
 import com.github.karlkm.clockworktools.tools.TunnelersPickaxe.TunnelersPickaxeTool;
 import org.bukkit.Material;
@@ -47,6 +50,19 @@ public final class ClockworkTools extends JavaPlugin {
             recipe.addIngredient(Material.ENDER_PEARL);
             recipe.addIngredient(Material.GOLDEN_APPLE);
             getServer().addRecipe(recipe);
+        }
+
+        if (getConfig().getBoolean("settings.enableMobCompactor")) {
+            // Mob Compactor and Bottled Mob
+            getServer().getPluginManager().registerEvents(new MobCompactorListener(this), this);
+            ItemStack mobCompactor = MobCompactorTool.createMobCompactor();
+            NamespacedKey key = new NamespacedKey(this, "mob_compactor");
+            ShapelessRecipe recipe = new ShapelessRecipe(key, mobCompactor);
+            recipe.addIngredient(Material.GLASS_BOTTLE);
+            recipe.addIngredient(Material.GOLDEN_APPLE);
+            getServer().addRecipe(recipe);
+
+            getServer().getPluginManager().registerEvents(new BottledMobListener(this), this);
         }
 
     }

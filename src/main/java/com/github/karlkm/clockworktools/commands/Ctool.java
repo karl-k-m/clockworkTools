@@ -1,6 +1,7 @@
 package com.github.karlkm.clockworktools.commands;
 
 import com.github.karlkm.clockworktools.tools.BlinkPearl.BlinkPearlTool;
+import com.github.karlkm.clockworktools.tools.MobCompactor.MobCompactorTool;
 import com.github.karlkm.clockworktools.tools.TunnelersPickaxe.TunnelersPickaxeTool;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -62,6 +63,17 @@ public class Ctool implements CommandExecutor, TabCompleter {
                 return true;
             }
 
+            if (args[0].equals("mobcompactor")) {
+                if (!plugin.getConfig().getBoolean("settings.enableMobCompactor")) {
+                    sender.sendMessage("Mob Compactor is disabled! (see config.yml)");
+                    return true;
+                }
+                Player p = (Player) sender;
+                ItemStack mobCompactor = MobCompactorTool.createMobCompactor();
+                p.getInventory().addItem(mobCompactor);
+                return true;
+            }
+
             sender.sendMessage("Invalid tool!");
 
             return true;
@@ -72,7 +84,7 @@ public class Ctool implements CommandExecutor, TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        List<String> completions = List.of("blinkpearl", "tunnelerspickaxe");
+        List<String> completions = List.of("blinkpearl", "tunnelerspickaxe", "mobcompactor");
 
         if (args.length == 1) {
             return completions;
