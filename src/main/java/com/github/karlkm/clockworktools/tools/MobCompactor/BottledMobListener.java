@@ -50,6 +50,8 @@ public class BottledMobListener implements Listener {
             for (World world : Bukkit.getWorlds()) {
                 for (LivingEntity entity : world.getLivingEntities()) {
                     if (entity.getUniqueId().toString().equals(uuid.toString())) {
+                        event.setCancelled(true);
+
                         if (Objects.equals(Objects.requireNonNull(entity.customName()) , Component.text("PersistentEntity"))) {
                             entity.customName(null);
                         }
