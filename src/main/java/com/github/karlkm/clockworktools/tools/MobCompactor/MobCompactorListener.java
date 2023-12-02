@@ -66,13 +66,14 @@ public class MobCompactorListener implements Listener {
                 entity.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, Integer.MAX_VALUE, 255, false, false, false));
                 entity.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 255, false, false, false));
 
-                Location tpLocation = new Location(player.getWorld(), 0, player.getWorld().getMaxHeight(), 0);
-                entity.teleport(tpLocation);
-
                 // Add a custom name to the entity, so it doesn't despawn.
                 if (entity.customName() == null) {
                     Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> entity.customName(Component.text("PersistentEntity")), 20L);
                 }
+                entity.setRemoveWhenFarAway(false);
+
+                Location tpLocation = new Location(player.getWorld(), 0, player.getWorld().getMaxHeight(), 0);
+                entity.teleport(tpLocation);
 
                 player.playSound(player.getLocation(), Sound.ENTITY_CHICKEN_EGG, 0.5F, 0.5F);
 

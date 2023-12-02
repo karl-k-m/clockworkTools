@@ -53,11 +53,12 @@ public class BottledMobListener implements Listener {
                         Chunk mobLocationChunk = mobLocation.getChunk();
                         mobLocationChunk.load();
 
+                        entity.teleport(player.getLocation());
+
                         if (Objects.equals(Objects.requireNonNull(entity.customName()) , Component.text("PersistentEntity"))) {
                             entity.customName(null);
                         }
 
-                        entity.teleport(player.getLocation());
                         entity.removePotionEffect(PotionEffectType.SLOW);
                         entity.removePotionEffect(PotionEffectType.INVISIBILITY);
                         entity.removePotionEffect(PotionEffectType.SLOW_FALLING);
