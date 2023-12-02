@@ -3,10 +3,7 @@ package com.github.karlkm.clockworktools.tools.MobCompactor;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Sound;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -51,6 +48,10 @@ public class BottledMobListener implements Listener {
                 for (LivingEntity entity : world.getLivingEntities()) {
                     if (entity.getUniqueId().toString().equals(uuid.toString())) {
                         event.setCancelled(true);
+
+                        Location mobLocation = new Location(player.getWorld(), 0, player.getWorld().getMaxHeight(), 0);
+                        Chunk mobLocationChunk = mobLocation.getChunk();
+                        mobLocationChunk.load();
 
                         if (Objects.equals(Objects.requireNonNull(entity.customName()) , Component.text("PersistentEntity"))) {
                             entity.customName(null);

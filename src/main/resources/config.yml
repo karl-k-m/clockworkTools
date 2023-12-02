@@ -2,3 +2,4 @@ settings:
   enableBlinkPearl: true
   enableTunnelersPickaxe: true
   enableMobCompactor: true
+  toolCraftItem: GOLDEN_APPLE
