@@ -56,7 +56,7 @@ public class MobCompactorListener implements Listener {
         if (isMobCompactor(heldItem) && event.getHand() == EquipmentSlot.HAND) {
             event.setCancelled(true);
 
-            if (event.getRightClicked() instanceof LivingEntity entity && !(entity instanceof Player) && entity.getType() != EntityType.ENDER_DRAGON && entity.getType() != EntityType.WITHER && isNotAmbient(entity)) {
+            if (event.getRightClicked() instanceof LivingEntity entity && !(entity instanceof Player) && entity.getType() != EntityType.ENDER_DRAGON && entity.getType() != EntityType.WITHER) {
                 ItemStack bottledMob = new BottledMobTool(plugin).createBottledMob(entity);
                 player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
                 player.getInventory().setItemInMainHand(bottledMob);
@@ -97,16 +97,6 @@ public class MobCompactorListener implements Listener {
             }
         }
         return false;
-    }
-
-    /**
-     * Checks if the entity is not an ambient mob.
-     * @param entity The entity to check.
-     * @return True if the entity is not an ambient mob, false otherwise.
-     */
-    private boolean isNotAmbient(LivingEntity entity) {
-        EntityType type = entity.getType();
-        return (!(entity instanceof Ambient) && type != EntityType.SQUID && type != EntityType.BAT && type != EntityType.PHANTOM && type != EntityType.GLOW_SQUID && type != EntityType.SALMON && type != EntityType.COD && type != EntityType.TROPICAL_FISH && type != EntityType.PUFFERFISH && type != EntityType.TURTLE && type != EntityType.DOLPHIN);
     }
 }
 
