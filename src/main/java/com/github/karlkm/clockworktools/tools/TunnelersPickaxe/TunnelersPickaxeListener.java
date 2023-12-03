@@ -23,7 +23,7 @@ public class TunnelersPickaxeListener implements Listener {
      */
     private static final EnumSet<Material> PICKAXE_BREAKABLE_NATURAL_BLOCKS = EnumSet.of(Material.ANDESITE,
             Material.STONE, Material.DIORITE, Material.DEEPSLATE, Material.GRANITE, Material.TUFF,
-            Material.CALCITE, Material.NETHERRACK, Material.END_STONE, Material.SANDSTONE);
+            Material.CALCITE, Material.NETHERRACK, Material.END_STONE, Material.SANDSTONE, Material.MOSSY_COBBLESTONE);
 
     /**
      * Listens for a player breaking a block with a Tunnelers Pickaxe in their hand and breaks the surrounding blocks.
