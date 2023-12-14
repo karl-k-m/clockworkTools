@@ -1,3 +1,5 @@
+# THIS REPO IS DEPRECATED, SEE https://github.com/karl-k-m/cTweaks
+
 # clockworkTools
 A PaperMC plugin that adds a variety of tools to enhance survival gameplay.  
 
